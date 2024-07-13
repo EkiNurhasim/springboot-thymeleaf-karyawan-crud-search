@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karyawan</title>
+  </head>
+  <body>
+    <h2>Table Karyawan</h2>
+    <a href="/add-karyawan-view">Add Karyawan</a>
+    <form th:action="@{/search-karyawan}" method="get">
+      <input type="text" name="keyword" id="keyword" th:value="${keyword}" placeholder="Enter your name..." />
+      <button type="submit">Search</button>
+    </form>
+    <div th:switch="${karyawans}">
+      <h3 th:case="null">No Record found</h3>
+      <table th:case="*">
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Detail</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        <tr th:each="karyawan : ${karyawans}">
+          <td th:text="${karyawan.id}"></td>
+          <td th:text="${karyawan.name}"></td>
+          <td>
+            <a th:href="@{/detail-karyawan/{id}(id = ${karyawan.id})}">Detail</a>
+          </td>
+          <td>
+            <a th:href="@{/edit-karyawan-view/{id}(id = ${karyawan.id})}">Edit</a>
+          </td>
+          <td>
+            <a th:href="@{/remove-karyawan/{id}(id = ${karyawan.id})}">Delete</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Karyawan</title>
+  </head>
+  <body>
+    <h2>Add Karyawan</h2>
+    <a href="/karyawan">Back</a>
+    <form action="" th:action="@{/edit-karyawan-from/{id}(id = ${karyawan.id})}" th:object="${karyawan}" method="post">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" th:field="*{name}" id="name" name="name" />
+      </div>
+      <div>
+        <label for="gender">Gender</label>
+        <input type="text" th:field="*{gender}" id="gender" name="gender" />
+      </div>
+      <div>
+        <label for="age">Age</label>
+        <input type="number" th:field="*{age}" id="age" name="age" />
+      </div>
+      <div>
+        <input type="submit" value="Add" />
+      </div>
+    </form>
+  </body>
+</html>

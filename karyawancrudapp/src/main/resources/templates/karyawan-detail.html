@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Karyawan</title>
+  </head>
+  <body>
+    <h2>Detail Karyawan</h2>
+    <a href="/karyawan">Back</a>
+    <div th:switch="${karyawan}">
+      <h3 th:case="null">No Record found</h3>
+      <table th:case="*">
+        <tr>
+          <td>No</td>
+          <td>:</td>
+          <td th:text="${karyawan.id}"></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>:</td>
+          <td th:text="${karyawan.name}"></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>:</td>
+          <td th:text="${karyawan.gender}"></td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td>:</td>
+          <td th:text="${karyawan.age}"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
